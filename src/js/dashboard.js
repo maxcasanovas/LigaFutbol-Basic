@@ -22,9 +22,15 @@ function countBy(teams, key) {
   return counts;
 }
 
+const PALETTE = ["#d1462f", "#e0a940", "#4f7942", "#2f6690", "#8a4b6b", "#c97b3d", "#3d6b5c", "#a83250"];
+const INK = "#2b2013";
+
 function renderCharts(teams) {
   const byCountry = countBy(teams, "country");
   const byLeague = countBy(teams, "league");
+
+  Chart.defaults.font.family = "'Nunito Sans', sans-serif";
+  Chart.defaults.color = INK;
 
   new Chart(document.getElementById("chart-countries"), {
     type: "bar",
@@ -34,8 +40,10 @@ function renderCharts(teams) {
         {
           label: "Equipos",
           data: Object.values(byCountry),
-          backgroundColor: "#4f8cff",
-          borderRadius: 6,
+          backgroundColor: "#d1462f",
+          borderColor: INK,
+          borderWidth: 2,
+          borderRadius: 4,
         },
       ],
     },
@@ -43,7 +51,8 @@ function renderCharts(teams) {
       responsive: true,
       plugins: { legend: { display: false } },
       scales: {
-        y: { beginAtZero: true, ticks: { precision: 0 } },
+        y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: "rgba(43,32,19,0.12)" } },
+        x: { grid: { display: false } },
       },
     },
   });
@@ -55,16 +64,9 @@ function renderCharts(teams) {
       datasets: [
         {
           data: Object.values(byLeague),
-          backgroundColor: [
-            "#4f8cff",
-            "#35c78a",
-            "#f5a623",
-            "#e5484d",
-            "#9b59f6",
-            "#22b8cf",
-            "#f06595",
-            "#82c91e",
-          ],
+          backgroundColor: PALETTE,
+          borderColor: "#fffaf0",
+          borderWidth: 2,
         },
       ],
     },
