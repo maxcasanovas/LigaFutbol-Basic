@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LigaFutbol | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Liga<span>Futbol</span></div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="ligas.html">Ligas</a></li>
+        <li><a href="paises.html">Países</a></li>
+        <li><a href="ciudades.html">Ciudades</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div>
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">Resumen general de equipos, países y ligas.</p>
+    </div>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-teams">0</span>
+        <span class="stat-label">Equipos</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-countries">0</span>
+        <span class="stat-label">Países</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-leagues">0</span>
+        <span class="stat-label">Ligas</span>
+      </div>
+    </section>
+
+    <section class="charts-grid">
+      <div class="chart-card">
+        <h2>Equipos por país</h2>
+        <canvas id="chart-countries"></canvas>
+      </div>
+      <div class="chart-card">
+        <h2>Distribución por liga</h2>
+        <canvas id="chart-leagues"></canvas>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2 class="page-title">Equipos</h2>
+      </div>
+      <div class="teams-table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Equipo</th>
+              <th>Liga</th>
+              <th>País</th>
+              <th>Ciudad</th>
+              <th>Fundado</th>
+            </tr>
+          </thead>
+          <tbody id="teams-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 LigaFutbol. Proyecto educativo sin fines comerciales.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
