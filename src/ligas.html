@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LigaFutbol | Ligas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Liga<span>Futbol</span></div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="ligas.html" class="active">Ligas</a></li>
+        <li><a href="paises.html">Países</a></li>
+        <li><a href="ciudades.html">Ciudades</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div>
+      <h1 class="page-title">Ligas</h1>
+      <p class="page-subtitle">Explorá las ligas y los equipos que forman parte de cada una.</p>
+    </div>
+
+    <section class="leagues-grid" id="leagues-grid"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 LigaFutbol. Proyecto educativo sin fines comerciales.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ligas.js"></script>
+</body>
+</html>
