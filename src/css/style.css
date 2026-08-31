@@ -444,6 +444,59 @@ main {
   font-weight: 600;
 }
 
+/* ===== About: tarjeta de perfil ===== */
+.profile-card {
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-ink);
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid var(--color-ink);
+  object-fit: cover;
+  background: var(--color-paper-alt);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 240px;
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+}
+
+.profile-role {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.profile-meta {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-bio {
+  margin-top: 0.5rem;
+  color: var(--color-ink-soft);
+  max-width: 60ch;
+}
+
 /* ===== Teams table: estilo planilla/libreta ===== */
 .section-header {
   display: flex;
