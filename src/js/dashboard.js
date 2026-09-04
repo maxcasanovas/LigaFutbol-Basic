@@ -1,17 +1,15 @@
-// Dashboard del index: stats, charts y listado de equipos. Usa TEAMS de data.js.
+// Dashboard del index: stats, charts y listado de equipos. Usa COUNTRIES, LEAGUES y TEAMS de data.js.
 document.addEventListener("DOMContentLoaded", () => {
-  renderStats(TEAMS);
-  renderCharts(TEAMS);
-  renderTeamsTable(TEAMS);
+  renderStats();
+  renderCharts();
+  renderTeamsTable();
+  document.getElementById("teams-tbody").addEventListener("click", handleTableClick);
 });
 
-function renderStats(teams) {
-  const countries = new Set(teams.map((t) => t.country));
-  const leagues = new Set(teams.map((t) => t.league));
-
-  document.getElementById("stat-teams").textContent = teams.length;
-  document.getElementById("stat-countries").textContent = countries.size;
-  document.getElementById("stat-leagues").textContent = leagues.size;
+function renderStats() {
+  document.getElementById("stat-teams").textContent = TEAMS.length;
+  document.getElementById("stat-countries").textContent = COUNTRIES.length;
+  document.getElementById("stat-leagues").textContent = LEAGUES.length;
 }
 
 function countBy(teams, key) {
@@ -24,22 +22,30 @@ function countBy(teams, key) {
 
 const PALETTE = ["#d1462f", "#e0a940", "#4f7942", "#2f6690", "#8a4b6b", "#c97b3d", "#3d6b5c", "#a83250"];
 const INK = "#2b2013";
+let countriesChart = null;
+let leaguesChart = null;
 
-function renderCharts(teams) {
-  const byCountry = countBy(teams, "country");
-  const byLeague = countBy(teams, "league");
+function renderCharts() {
+  const byCountry = countBy(TEAMS, "country");
+  const byLeague = countBy(TEAMS, "league");
+
+  const countryLabels = COUNTRIES.slice().sort((a, b) => a.name.localeCompare(b.name)).map((c) => c.name);
+  const leagueLabels = LEAGUES.slice().sort((a, b) => a.name.localeCompare(b.name)).map((l) => l.name);
 
   Chart.defaults.font.family = "'Nunito Sans', sans-serif";
   Chart.defaults.color = INK;
 
-  new Chart(document.getElementById("chart-countries"), {
+  if (countriesChart) countriesChart.destroy();
+  if (leaguesChart) leaguesChart.destroy();
+
+  countriesChart = new Chart(document.getElementById("chart-countries"), {
     type: "bar",
     data: {
-      labels: Object.keys(byCountry),
+      labels: countryLabels,
       datasets: [
         {
           label: "Equipos",
-          data: Object.values(byCountry),
+          data: countryLabels.map((name) => byCountry[name] || 0),
           backgroundColor: "#d1462f",
           borderColor: INK,
           borderWidth: 2,
@@ -57,13 +63,13 @@ function renderCharts(teams) {
     },
   });
 
-  new Chart(document.getElementById("chart-leagues"), {
+  leaguesChart = new Chart(document.getElementById("chart-leagues"), {
     type: "doughnut",
     data: {
-      labels: Object.keys(byLeague),
+      labels: leagueLabels,
       datasets: [
         {
-          data: Object.values(byLeague),
+          data: leagueLabels.map((name) => byLeague[name] || 0),
           backgroundColor: PALETTE,
           borderColor: "#fffaf0",
           borderWidth: 2,
@@ -77,9 +83,15 @@ function renderCharts(teams) {
   });
 }
 
-function renderTeamsTable(teams) {
+function renderTeamsTable() {
   const tbody = document.getElementById("teams-tbody");
-  tbody.innerHTML = teams
+
+  if (TEAMS.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No hay equipos cargados todavía.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = TEAMS
     .map(
       (t) => `
         <tr>
@@ -88,8 +100,31 @@ function renderTeamsTable(teams) {
           <td>${t.country}</td>
           <td>${t.city}</td>
           <td>${t.founded}</td>
+          <td>
+            <div class="table-actions">
+              <a class="btn btn-ghost btn-sm" href="equipo-form.html?id=${t.id}">Editar</a>
+              <button class="btn btn-danger btn-sm" type="button" data-delete-team="${t.id}">Eliminar</button>
+            </div>
+          </td>
         </tr>
       `
     )
     .join("");
+}
+
+function handleTableClick(event) {
+  const button = event.target.closest("[data-delete-team]");
+  if (!button) return;
+
+  const id = Number(button.dataset.deleteTeam);
+  const team = findTeam(id);
+  if (!team) return;
+
+  const confirmed = window.confirm(`¿Eliminar el equipo "${team.name}"?`);
+  if (!confirmed) return;
+
+  deleteTeam(id);
+  renderStats();
+  renderCharts();
+  renderTeamsTable();
 }

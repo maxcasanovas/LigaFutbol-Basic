@@ -444,6 +444,284 @@ main {
   font-weight: 600;
 }
 
+/* ===== About: tarjeta de perfil ===== */
+.profile-card {
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-ink);
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid var(--color-ink);
+  object-fit: cover;
+  background: var(--color-paper-alt);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 240px;
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+}
+
+.profile-role {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.profile-meta {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-bio {
+  margin-top: 0.5rem;
+  color: var(--color-ink-soft);
+  max-width: 60ch;
+}
+
+/* ===== Login ===== */
+.login-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-ink);
+}
+
+.login-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.login-field input {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 10px;
+  background: #fffaf0;
+  color: var(--color-ink);
+}
+
+.login-field input:focus {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+.login-error {
+  color: var(--color-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.login-submit {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: #fffaf0;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.login-submit:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.login-hint {
+  margin-top: 1.25rem;
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.login-hint a {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ===== CRUD: botones, formularios y acciones sobre tarjetas ===== */
+.page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: #fffaf0;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-danger {
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-danger:hover {
+  background: var(--color-primary);
+  color: #fffaf0;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-ink-soft);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
+.form-card {
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 520px;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-ink);
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field select {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 10px;
+  background: #fffaf0;
+  color: var(--color-ink);
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.form-error {
+  color: var(--color-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
 /* ===== Teams table: estilo planilla/libreta ===== */
 .section-header {
   display: flex;
