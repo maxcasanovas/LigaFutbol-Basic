@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LigaFutbol | Ciudades</title>
+  <title>LigaFutbol | Liga</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -15,9 +15,9 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Dashboard</a></li>
-        <li><a href="ligas.html">Ligas</a></li>
+        <li><a href="ligas.html" class="active">Ligas</a></li>
         <li><a href="paises.html">Países</a></li>
-        <li><a href="ciudades.html" class="active">Ciudades</a></li>
+        <li><a href="ciudades.html">Ciudades</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
     </nav>
@@ -25,11 +25,30 @@
 
   <main>
     <div>
-      <h1 class="page-title">Ciudades</h1>
-      <p class="page-subtitle">Explorá las ciudades y los equipos que tienen su sede en cada una.</p>
+      <h1 class="page-title" id="form-title">Nueva liga</h1>
+      <p class="page-subtitle">Completá el nombre y el país de la liga.</p>
     </div>
 
-    <section class="cities-grid" id="cities-grid"></section>
+    <section class="form-card">
+      <form id="liga-form" class="form-grid" novalidate>
+        <label class="form-field">
+          <span>Nombre de la liga</span>
+          <input type="text" name="name" placeholder="Ej: Eredivisie" required />
+        </label>
+
+        <label class="form-field">
+          <span>País</span>
+          <select name="country" required></select>
+        </label>
+
+        <p class="form-error" id="form-error" hidden></p>
+
+        <div class="form-actions">
+          <a href="ligas.html" class="btn btn-ghost">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -38,6 +57,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
-  <script src="js/ciudades.js"></script>
+  <script src="js/liga-form.js"></script>
 </body>
 </html>

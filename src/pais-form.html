@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LigaFutbol | Ciudades</title>
+  <title>LigaFutbol | País</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -16,8 +16,8 @@
       <ul>
         <li><a href="index.html">Dashboard</a></li>
         <li><a href="ligas.html">Ligas</a></li>
-        <li><a href="paises.html">Países</a></li>
-        <li><a href="ciudades.html" class="active">Ciudades</a></li>
+        <li><a href="paises.html" class="active">Países</a></li>
+        <li><a href="ciudades.html">Ciudades</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
     </nav>
@@ -25,11 +25,25 @@
 
   <main>
     <div>
-      <h1 class="page-title">Ciudades</h1>
-      <p class="page-subtitle">Explorá las ciudades y los equipos que tienen su sede en cada una.</p>
+      <h1 class="page-title" id="form-title">Nuevo país</h1>
+      <p class="page-subtitle">Completá el nombre del país.</p>
     </div>
 
-    <section class="cities-grid" id="cities-grid"></section>
+    <section class="form-card">
+      <form id="pais-form" class="form-grid" novalidate>
+        <label class="form-field">
+          <span>Nombre del país</span>
+          <input type="text" name="name" placeholder="Ej: Uruguay" required />
+        </label>
+
+        <p class="form-error" id="form-error" hidden></p>
+
+        <div class="form-actions">
+          <a href="paises.html" class="btn btn-ghost">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -38,6 +52,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
-  <script src="js/ciudades.js"></script>
+  <script src="js/pais-form.js"></script>
 </body>
 </html>

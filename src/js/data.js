@@ -1,4 +1,27 @@
-// Datos estáticos del portal LigaFutbol. Sin API: todo vive en este array.
+// Datos estáticos del portal LigaFutbol. Sin API: todo vive en estos arrays en memoria.
+// Los formularios de CRUD (país, liga, equipo) leen y mutan estos mismos arrays vía store.js.
+const COUNTRIES = [
+  { id: 1, name: "Argentina" },
+  { id: 2, name: "Brasil" },
+  { id: 3, name: "España" },
+  { id: 4, name: "Inglaterra" },
+  { id: 5, name: "Italia" },
+  { id: 6, name: "Alemania" },
+  { id: 7, name: "Francia" },
+  { id: 8, name: "Portugal" },
+];
+
+const LEAGUES = [
+  { id: 1, name: "Liga Profesional Argentina", country: "Argentina" },
+  { id: 2, name: "Brasileirão", country: "Brasil" },
+  { id: 3, name: "LaLiga", country: "España" },
+  { id: 4, name: "Premier League", country: "Inglaterra" },
+  { id: 5, name: "Serie A", country: "Italia" },
+  { id: 6, name: "Bundesliga", country: "Alemania" },
+  { id: 7, name: "Ligue 1", country: "Francia" },
+  { id: 8, name: "Primeira Liga", country: "Portugal" },
+];
+
 const TEAMS = [
   { id: 1, name: "River Plate", league: "Liga Profesional Argentina", country: "Argentina", city: "Buenos Aires", founded: 1901, stadium: "Estadio Monumental" },
   { id: 2, name: "Boca Juniors", league: "Liga Profesional Argentina", country: "Argentina", city: "Buenos Aires", founded: 1905, stadium: "La Bombonera" },
