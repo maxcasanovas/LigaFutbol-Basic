@@ -1,4 +1,4 @@
-// Capa de acceso a datos sobre COUNTRIES, LEAGUES y TEAMS (data.js).
+// Capa de acceso a datos sobre COUNTRIES, LEAGUES, CITIES y TEAMS (data.js).
 // No hay backend: cada mutación se refleja en sessionStorage para que sobreviva a la navegación
 // entre páginas dentro de la misma pestaña. Se pierde al cerrar la pestaña o el navegador.
 const STORAGE_KEY = "ligafutbol:data";
@@ -21,6 +21,7 @@ function loadFromStorage() {
     const parsed = JSON.parse(raw);
     if (parsed.countries) replaceContents(COUNTRIES, parsed.countries);
     if (parsed.leagues) replaceContents(LEAGUES, parsed.leagues);
+    if (parsed.cities) replaceContents(CITIES, parsed.cities);
     if (parsed.teams) replaceContents(TEAMS, parsed.teams);
   } catch (e) {
     // Datos corruptos en sessionStorage: se ignoran y quedan los valores por defecto de data.js.
@@ -31,7 +32,7 @@ function persist() {
   try {
     sessionStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ countries: COUNTRIES, leagues: LEAGUES, teams: TEAMS })
+      JSON.stringify({ countries: COUNTRIES, leagues: LEAGUES, cities: CITIES, teams: TEAMS })
     );
   } catch (e) {
     // sessionStorage no disponible (ej. navegación privada): los cambios solo viven en esta página.
@@ -56,6 +57,10 @@ function findLeague(id) {
   return LEAGUES.find((l) => l.id === id);
 }
 
+function findCity(id) {
+  return CITIES.find((c) => c.id === id);
+}
+
 function findTeam(id) {
   return TEAMS.find((t) => t.id === id);
 }
@@ -69,6 +74,9 @@ function saveCountry({ id, name }) {
     if (oldName !== name) {
       LEAGUES.forEach((l) => {
         if (l.country === oldName) l.country = name;
+      });
+      CITIES.forEach((c) => {
+        if (c.country === oldName) c.country = name;
       });
       TEAMS.forEach((t) => {
         if (t.country === oldName) t.country = name;
@@ -92,6 +100,10 @@ function deleteCountry(id) {
   LEAGUES.filter((l) => l.country === country.name)
     .map((l) => l.id)
     .forEach(deleteLeague);
+
+  CITIES.filter((c) => c.country === country.name)
+    .map((c) => c.id)
+    .forEach(deleteCity);
 
   for (let i = TEAMS.length - 1; i >= 0; i--) {
     if (TEAMS[i].country === country.name) TEAMS.splice(i, 1);
@@ -136,6 +148,40 @@ function deleteLeague(id) {
 
   const index = LEAGUES.findIndex((l) => l.id === id);
   LEAGUES.splice(index, 1);
+  persist();
+}
+
+function saveCity({ id, name, country }) {
+  if (id) {
+    const city = findCity(id);
+    const oldName = city.name;
+    city.name = name;
+    city.country = country;
+
+    TEAMS.forEach((t) => {
+      if (t.city === oldName) t.city = name;
+    });
+
+    persist();
+    return city;
+  }
+
+  const city = { id: nextId(CITIES), name, country };
+  CITIES.push(city);
+  persist();
+  return city;
+}
+
+function deleteCity(id) {
+  const city = findCity(id);
+  if (!city) return;
+
+  for (let i = TEAMS.length - 1; i >= 0; i--) {
+    if (TEAMS[i].city === city.name) TEAMS.splice(i, 1);
+  }
+
+  const index = CITIES.findIndex((c) => c.id === id);
+  CITIES.splice(index, 1);
   persist();
 }
 

@@ -16,12 +16,12 @@ function renderCountries() {
   grid.innerHTML = countries
     .map((country) => {
       const teams = TEAMS.filter((t) => t.country === country.name);
-      const cities = new Set(teams.map((t) => t.city));
+      const cities = CITIES.filter((c) => c.country === country.name);
       return `
         <article class="country-card">
           <div class="country-card-header">
             <h2>${country.name}</h2>
-            <span class="country-cities">${cities.size} ${cities.size === 1 ? "ciudad" : "ciudades"}</span>
+            <span class="country-cities">${cities.length} ${cities.length === 1 ? "ciudad" : "ciudades"}</span>
           </div>
           <p class="country-count">${teams.length} ${teams.length === 1 ? "equipo" : "equipos"}</p>
           <ul class="country-teams">
