@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LigaFutbol | Países</title>
+  <title>LigaFutbol | Ciudad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -16,23 +16,39 @@
       <ul>
         <li><a href="index.html">Dashboard</a></li>
         <li><a href="ligas.html">Ligas</a></li>
-        <li><a href="paises.html" class="active">Países</a></li>
-        <li><a href="ciudades.html">Ciudades</a></li>
+        <li><a href="paises.html">Países</a></li>
+        <li><a href="ciudades.html" class="active">Ciudades</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div class="page-head">
-      <div>
-        <h1 class="page-title">Países</h1>
-        <p class="page-subtitle">Explorá los países y los equipos que representan a cada uno.</p>
-      </div>
-      <a href="pais-form.html" class="btn btn-primary">+ Agregar país</a>
+    <div>
+      <h1 class="page-title" id="form-title">Nueva ciudad</h1>
+      <p class="page-subtitle">Completá el nombre y el país de la ciudad.</p>
     </div>
 
-    <section class="countries-grid" id="countries-grid"></section>
+    <section class="form-card">
+      <form id="ciudad-form" class="form-grid" novalidate>
+        <label class="form-field">
+          <span>Nombre de la ciudad</span>
+          <input type="text" name="name" placeholder="Ej: Rosario" required />
+        </label>
+
+        <label class="form-field">
+          <span>País</span>
+          <select name="country" required></select>
+        </label>
+
+        <p class="form-error" id="form-error" hidden></p>
+
+        <div class="form-actions">
+          <a href="ciudades.html" class="btn btn-ghost">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -41,6 +57,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
-  <script src="js/paises.js"></script>
+  <script src="js/ciudad-form.js"></script>
 </body>
 </html>

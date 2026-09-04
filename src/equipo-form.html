@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LigaFutbol | Equipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Liga<span>Futbol</span></div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="ligas.html">Ligas</a></li>
+        <li><a href="paises.html">Países</a></li>
+        <li><a href="ciudades.html">Ciudades</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div>
+      <h1 class="page-title" id="form-title">Nuevo equipo</h1>
+      <p class="page-subtitle">Completá los datos del equipo.</p>
+    </div>
+
+    <section class="form-card">
+      <form id="equipo-form" class="form-grid" novalidate>
+        <label class="form-field">
+          <span>Nombre del equipo</span>
+          <input type="text" name="name" placeholder="Ej: Independiente" required />
+        </label>
+
+        <label class="form-field">
+          <span>Liga</span>
+          <select name="league" required></select>
+          <span class="form-hint" id="team-country-preview"></span>
+        </label>
+
+        <label class="form-field">
+          <span>Ciudad</span>
+          <select name="city" required></select>
+        </label>
+
+        <label class="form-field">
+          <span>Año de fundación</span>
+          <input type="number" name="founded" min="1850" max="2026" placeholder="Ej: 1905" required />
+        </label>
+
+        <label class="form-field">
+          <span>Estadio</span>
+          <input type="text" name="stadium" placeholder="Ej: Libertadores de América" required />
+        </label>
+
+        <p class="form-error" id="form-error" hidden></p>
+
+        <div class="form-actions">
+          <a href="index.html" class="btn btn-ghost" id="cancel-link">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 LigaFutbol. Proyecto educativo sin fines comerciales.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/equipo-form.js"></script>
+</body>
+</html>
